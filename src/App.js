@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, useContext } from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route
+} from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
+
+
+import Spinner from './components/Spinner/Spinner';
+import AuthContext from './store/AuthContext';
+import HomeScreen from './views/Home';
+import LoginScreen from './views/Login';
+import Footer from './components/Footer';
+import MainNav from './components/MainNav';
+import ProfileScreen from './views/Profile';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const { isVerifying, isAuthenticated } = useContext(AuthContext);
+
+	if (isVerifying) {
+		return (
+			<Spinner className="py-6" />
+		)
+	}
+
+	if (!isAuthenticated){
+		return (
+			<LoginScreen />
+		)
+	}
+
+	return (
+		<Suspense fallback={
+			<div className="container py-5">
+				<Spinner className="py-6" />
+			</div>
+		}>
+			<Router forceRefresh={true}>
+				<MainNav />
+
+				<Switch>
+					<Route path="/profile">
+						<ProfileScreen />
+					</Route>
+					<Route path="/">
+						<HomeScreen />
+					</Route>
+				</Switch>
+
+				<Toaster />
+				<Footer />
+
+			</Router>
+		</Suspense>
+	);
 }
 
 export default App;

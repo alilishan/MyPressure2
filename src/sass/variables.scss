@@ -1,0 +1,53 @@
+
+// App Variables
+$appBgColor: #fcfcfc;
+$appColor: #4a4b65;
+$appBgSecondaryColor: #f7f7fc;
+$appOunchColor: #481080; // #FCC100; //#0366d6;
+$fontPaths: './';
+
+
+// Custom App Variables
+$myNeighborPurple: #481080;
+
+// Override BS default variables before the import
+$body-bg: $appBgColor;
+$enable-negative-margins: true;
+
+$accordion-button-active-bg: lighten($myNeighborPurple, 60%);
+$accordion-button-active-color:  $myNeighborPurple;
+$accordion-button-focus-border-color:  $myNeighborPurple;
+$accordion-button-focus-box-shadow: 0 0 0 0.25rem lighten($myNeighborPurple, 65%);
+
+$modal-fade-transform: translate(0, 50px);
+$modal-content-border-width: 0;
+
+$utilities: (
+  "opacity": (
+    property: opacity,
+    responsive: true,
+    values: (
+      0: 0,
+      5: .05,
+      10: .10,
+      15: .15,
+      20: .20,
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1,
+    )
+  )
+ );
+
+ $spacer: 1rem !default;
+ $spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 5),
+  7: ($spacer * 6.5)
+)

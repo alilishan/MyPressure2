@@ -1,0 +1,105 @@
+
+@import '../../sass/variables.scss';
+
+#main-nav {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    transition: 
+        padding-top .3s, 
+        padding-bottom .3s;
+    background-color: transparent;
+
+    .navbar-brand svg {
+        height: 40px;
+    }
+
+    .navbar-toggler {
+        border-color: transparent;
+
+        &:focus {
+            box-shadow: none;
+            
+            .menu-icon {
+                opacity: 1;
+            }
+        }
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-icon {
+        display: block;
+        width: 32px;
+        height: 32px;
+        opacity: .6;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &.nav-shrink {
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        background-color: #fff;
+        box-shadow: 0 1px 9px rgba(0, 0, 0, 0.05);
+    }
+    
+    @media (max-width: 576px) {
+        background-color: #fff;
+        box-shadow: 0 1px 9px rgba(0, 0, 0, 0.05);
+        padding-top: .8rem;
+        padding-bottom: .8rem;
+    }
+
+    .nav-link{
+        color: black;
+        letter-spacing: 1px;;
+        
+        &.active {
+            color: $appOunchColor;
+        }
+
+        &.btn {
+            &:active,
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+#mainNavOffcanvas {
+    .full-logo {
+        width: 150px;
+    }
+
+
+    .list-group-item {
+        padding: 0;
+        border-color: #f8f9fa !important;
+
+        a {
+            display: block;
+            padding: 1rem 2rem;
+            color: black;
+            letter-spacing: 1px;
+            font-size: 1.2em;
+
+            &.active {
+                color: $appOunchColor;
+            }
+        }
+
+        .list-group-item  {
+            a {
+                padding-left: 4.5rem;
+            }
+        }
+    }
+}

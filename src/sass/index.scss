@@ -1,0 +1,346 @@
+
+@import './variables.scss';
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Load Fonts
+@import '../fonts/Poppins/style.scss';
+@import '../fonts/MaterialDesign/scss/materialdesignicons.scss';
+
+// @import "~slick-carousel/slick/slick.css";
+// @import "~slick-carousel/slick/slick-theme.css";
+
+// @import '../hint.css-2.6.0/hint.css';
+
+
+:root {
+	--default-font-size: 14px;
+	--mynegbor-purple: #{$myNeighborPurple};
+}
+
+html,
+body { 
+	background-color: $appBgColor;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	font-family: 'Poppins', 'Verdana', Helvetica, Arial, sans-serif;
+	font-size: var(--default-font-size);
+	color: $appColor;
+	letter-spacing: .5px;	
+	font-weight: 400;
+    line-height: 1.5;
+	
+
+	.btn, .btn:focus, .btn-link, a, a:link, a:visited {
+		text-decoration: none;
+		outline: 0;
+		transition: all .3s ease;
+		letter-spacing: .8px;
+	}
+}
+
+
+body {
+	&:not(.body-signin) {
+		padding-top: 70px;
+	}
+
+	&.body-signin {
+		display: flex;
+		align-items: center;
+		padding-top: 40px;
+		padding-bottom: 40px;
+		background-color: #f5f5f5;
+
+		#root {
+			width: 100%;
+			max-width: 330px;
+			padding: 15px;
+			margin: auto;
+
+			input[type="email"] {
+				margin-bottom: -1px;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+
+			input[type="password"] {
+				margin-bottom: 10px;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+		}
+	}
+}
+
+
+footer {
+	position: relative;
+}
+
+.btn-purple {
+    @include button-variant($myNeighborPurple, $myNeighborPurple);
+}
+
+.btn-purple-light {
+    @include button-variant(lighten($myNeighborPurple, 50%), lighten($myNeighborPurple, 50%));
+	font-weight: 500;
+}
+
+
+.svg-icon {
+	width: 64px;
+	height: 64px;
+	display: inline-block;
+
+	&.sm {
+		width: 32px;
+		height: 32px;
+	}
+
+	&.lg {
+		width: 128px;
+		height: 128px;
+	}
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.dropdown-toggle {
+	&:after {
+		font-family: Material Design Icons;
+		content: "\F0140";
+		vertical-align: inherit;
+		font-weight: 300;
+		border: 0;
+	}
+	
+	&.no-caret:after {
+		display: none;
+	}
+}
+
+
+//Font Weights
+.ftw-300 {font-weight: 300 !important;}
+.ftw-400 {font-weight: 400 !important;}
+.ftw-600 {font-weight: 600 !important;}
+
+//Letterspacing
+.ls-1 { letter-spacing: 1px !important; }
+.ls-5 { letter-spacing: .5px !important; }
+.ls-8 { letter-spacing: .8px !important; }
+
+
+.btn-divider {
+    display: inline-block;
+    width: 1px;
+    height: 1.5rem;
+    margin: 0 .75rem;
+    background-color: #e9e9f2;
+}
+
+
+//Hint and tool tip
+.tooltip-inner,
+[class*=hint--]:after {
+    background: #343a40;
+    padding: .7em 1em;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    text-shadow: none;
+    font-weight: 600;
+}
+
+.hint--error:after { background-color: #b34e4d; }
+.hint--warning:after { background-color: #c09854; }
+.hint--info:after { background-color: #3986ac; }
+.hint--success:after { background-color: #458746; }
+
+.color-secondary {
+	color: $appBgSecondaryColor !important;
+}
+
+.color-ounch {
+	color: lighten($appOunchColor, 30) !important;
+}
+
+.bg-ounch {
+	background: lighten($appOunchColor, 30);
+}
+
+.bg-ounch-color {
+	color: lighten($appOunchColor, 30);
+}
+
+.bg-screens {
+    background: #d3f2ff;
+}
+
+.btn-ounch {
+	color: $appOunchColor;
+	background-color: lighten($appOunchColor, 40);
+	border-color: lighten($appOunchColor, 40);
+}
+
+.bg-overlay-content {
+    display: block;
+    position: relative;
+    z-index: 5;
+}
+
+.box-shadow {
+    box-shadow: 0 0 0.625rem -0.1875rem rgba(0,0,0,0.13) !important;
+
+	&-lg {
+		box-shadow: -0.0625rem 0 0.625rem 0 rgba(0,0,0,0.07),0.3125rem 1.25rem 2.5rem 0 rgba(0,0,0,0.04) !important;
+	}
+}
+
+.border-gray-300 {
+    border-color: #d9e2ef!important;
+}
+
+.highlight {
+	position: relative;
+	z-index: 1;
+	white-space: nowrap;
+
+	&:before {
+		position: absolute;
+		top: auto;
+		left: 0;
+		right: 0;
+		bottom: .25em;
+		z-index: -1;
+		background-color: lighten($appOunchColor, 30);
+		content: "";
+		display: block;
+		height: .345em;
+		margin: auto;
+		transition: height .2s cubic-bezier(.86,0,.07,1);
+		width: 100%;
+	}
+}
+
+.card-hover {
+	cursor: pointer;
+    transition: 
+		border-color 0.2s ease-in-out,
+		box-shadow 0.2s ease-in-out;
+	
+		&:hover, 
+		&.card-active {
+			border-color: rgba(118,109,244,0.35);
+			box-shadow: 0.1875rem 0.1875rem 0.625rem -0.125rem rgba(0, 0, 0, .2) !important;
+		}
+}
+
+.card-select {
+	position: relative;
+
+	&:after {
+		content: '';
+		background-color: #e9e9f2;
+		position: absolute;
+		width: 15px;
+		height: 15px;
+		border-radius: 50px;
+		top: 10px;
+		left: 10px;
+	}
+
+	&.card-active {
+		border-color: #198754 !important;
+
+		&:after {
+			background-color: #6bcb44;
+		}
+	}
+}
+
+
+input::-webkit-list-button,
+input::-webkit-calendar-picker-indicator {
+	display: none;
+	-webkit-appearance: none;
+}
+
+[list]::-webkit-calendar-picker-indicator {
+    display: none;
+	-webkit-appearance: none;
+  }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.sticky-inner-wrapper{
+	transition: padding, box-shadow .23s ease-in;
+	z-index: 1032; // Over the nav bar
+	border-radius: 0 0 15px 15px;
+}
+
+.custom-select{
+	padding: 0;
+
+	.css-yk16xz-control {
+		// padding: 0.375rem 0.75rem;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.5;
+		color: #212529;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #ced4da;
+
+		&:focus {
+			color: #212529;
+			background-color: #fff;
+			border-color: #86b7fe;
+			outline: 0;
+			box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+		}
+	}
+}
+
+/* 
+.accordion-button:not(.collapsed) {
+    color: var(--mynegbor-purple);
+    background-color: lighten($myNeighborPurple, 65%);
+    box-shadow: inset 0 -1px 0 lighten($myNeighborPurple, 13%);
+} 
+*/
+
+.nav-link {
+	color: var(--mynegbor-purple);
+	
+	&:hover,
+	&:focus {
+		color: var(--mynegbor-purple);
+	}
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: var(--mynegbor-purple);
+}
+
+
+// Fixes 
+@import './_fix_css_zoom.scss';
+
